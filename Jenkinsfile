@@ -11,13 +11,14 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'apt install python3-pytest python3-flask'
+                sh 'python3 -m venv .venv'
+                sh '.venv/bin/pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'python -m unittest discover -s tests -v'
+                sh '.venv/bin/python -m unittest discover -s tests -v'
             }
         }
     }
