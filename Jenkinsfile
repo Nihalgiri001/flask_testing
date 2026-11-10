@@ -12,13 +12,13 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'python3 -m venv .venv'
-                sh '.venv/bin/pip install -r requirements.txt'
+                sh '.venv/bin/pip install Flask pytest'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh '.venv/bin/python -m unittest discover -s tests -v'
+                sh '.venv/bin/pytest test_app.py -v'
             }
         }
     }
