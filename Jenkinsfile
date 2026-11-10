@@ -11,7 +11,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install pytest flask'
+                sh 'apt install python3-pytest python3-flask'
             }
         }
 
